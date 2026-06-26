@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)file:///Users/samantha/Downloads/referral-ticker_8.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mercato · 2026 Referral Goal Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./index_files/css2" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FBFAF7; --card:#FFFFFF; --ink:#1F2A24; --muted:#76837C;
+    --green-dark:#1E5C42; --green:#3E9B6E; --green-light:#BFE0CD;
+    --gold:#E7B84E; --red:#C2453C; --hairline:#E8EAE6; --track:#F1F2EF;
+    --chip-red-bg:#F7E3E0; --chip-red-ink:#B23A30;
+    --chip-green-bg:#E1EFE7; --chip-green-ink:#1E5C42;
+    --p-sipps:#1E5C42; --p-modify:#4F9E78; --p-somos:#86C0A3;
+    --p-hvcc:#D8B25A; --p-cd:#6E8CA8; --p-act:#9B7BA3;
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Inter",-apple-system,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:26px 28px 36px;flex:1;
+    display:flex;flex-direction:column;justify-content:center;gap:20px}
+
+  /* header */
+  .top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand h1{font-family:var(--serif);font-weight:700;color:var(--green-dark);font-size:24px;margin:0;line-height:1.1}
+  .brand small{display:block;font-weight:600;color:var(--muted);font-size:11.5px;letter-spacing:.02em;text-transform:uppercase}
+  .live{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;color:var(--muted);font-weight:600}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--green);animation:pulse 1.7s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.82)}}
+
+  /* COUNTDOWN HERO */
+  .cd{background:var(--green-dark);border-radius:18px;padding:32px 36px;color:#fff;
+    display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center;position:relative;overflow:hidden}
+  @media(max-width:820px){.cd{grid-template-columns:1fr;gap:24px;padding:26px 22px}}
+  .cd-eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:15px}
+  .clock{display:flex;gap:11px}
+  .unit{text-align:center;width:clamp(78px,9.5vw,104px)}
+  @media(max-width:820px){.unit{width:auto;flex:1}}
+  .unit .n{font-family:var(--serif);font-weight:700;font-size:clamp(38px,7vw,58px);line-height:1;
+    background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.20);border-radius:13px;
+    padding:15px 8px;display:block;font-variant-numeric:tabular-nums}
+  .unit .u{display:block;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--green-light);margin-top:8px}
+  .unit.sec .n{color:var(--gold)}
+
+  .cd-right{display:flex;flex-direction:column;gap:13px}
+  .cd-head{font-family:var(--serif);font-weight:700;font-size:clamp(20px,2.5vw,26px);line-height:1.2}
+  .cd-head .cash{color:var(--gold)}
+  .cd-rally{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .cd-pct{font-family:var(--serif);font-weight:700;font-size:clamp(30px,4vw,42px);line-height:1;color:#fff}
+  .cd-msg{font-size:15px;font-weight:600;color:var(--green-light)}
+  .cd-bar{height:18px;background:rgba(255,255,255,.16);border-radius:10px;overflow:hidden;position:relative}
+  .cd-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--green-light));
+    border-radius:10px;transition:width .7s ease;position:relative}
+  .cd-bar i::after{content:"";position:absolute;inset:0;border-radius:10px;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);
+    transform:translateX(-100%);animation:shimmer 2.6s ease-in-out infinite}
+  @keyframes shimmer{0%{transform:translateX(-100%)}60%,100%{transform:translateX(220%)}}
+  .cd-stats{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--green-light)}
+  .cd-stats b{color:#fff;font-weight:700;font-size:16px}
+  .cd-togo b{font-family:var(--serif);font-size:23px}
+
+  /* supporting cards */
+  .grid{display:grid;grid-template-columns:1.2fr 1fr;gap:18px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--hairline);border-radius:14px;padding:24px 28px;display:flex;flex-direction:column;gap:16px}
+  .label{font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+  .goalnum{font-family:var(--serif);font-weight:700;font-size:44px;color:var(--ink);line-height:1}
+  .goalnum small{font-family:var(--sans);font-size:18px;color:var(--muted);font-weight:600}
+  .bar{height:15px;background:var(--track);border-radius:9px;overflow:hidden}
+  .fill{height:100%;background:var(--green);border-radius:9px;transition:width .6s ease}
+  .tiers{display:flex;flex-direction:column;gap:9px;font-size:15px;color:var(--ink);font-weight:600}
+  .tiers i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:9px;vertical-align:middle}
+  .tiers em{color:var(--muted);font-weight:600;font-style:normal}
+  .row{display:flex;justify-content:space-between;align-items:baseline;font-size:18px}
+  .row span{color:var(--muted)} .row b{font-weight:700;color:var(--ink);font-size:20px}
+  .pill{align-self:flex-start;font-size:15px;font-weight:700;padding:7px 18px;border-radius:22px;margin-top:2px}
+  .pill.ahead{background:var(--chip-green-bg);color:var(--chip-green-ink)}
+  .pill.behind{background:var(--chip-red-bg);color:var(--chip-red-ink)}
+
+  .foot{font-size:13px;color:var(--muted);font-style:italic;text-align:center;border-top:1px solid var(--hairline);padding-top:18px}
+  @media(prefers-reduced-motion:reduce){.fill,.cd-bar i{transition:none}
+    .dot{animation:none} .cd-bar i::after{animation:none;display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div class="brand">
+      <h1>2026 Referral Goal Tracker</h1>
+      <small>Mercato · 3.3 &amp; 3.4 Referrals</small>
+    </div>
+    <span class="live"><span class="dot"></span>Live · auto-updates · <span id="stamp">3:20 PM</span></span>
+  </div>
+
+  <!-- COUNTDOWN HERO -->
+  <div class="cd">
+    <div>
+      <div class="cd-eyebrow" id="cd-eyebrow">Sprint to the June 30 bonus</div>
+      <div class="clock">
+        <div class="unit"><span class="n" id="cd-d">4</span><span class="u">Days</span></div>
+        <div class="unit"><span class="n" id="cd-h">08</span><span class="u">Hrs</span></div>
+        <div class="unit"><span class="n" id="cd-m">39</span><span class="u">Min</span></div>
+        <div class="unit sec"><span class="n" id="cd-s">43</span><span class="u">Sec</span></div>
+      </div>
+    </div>
+    <div class="cd-right">
+      <div class="cd-head" id="cd-head"><span class="cash">$2,500</span> unlocks when we hit <b>12,000</b> referrals by June 30</div>
+      <div class="cd-rally">
+        <span class="cd-pct" id="cd-pct">95.5% there</span>
+        <span class="cd-msg" id="cd-msg">Just 538 more by June 30 — let's bring it home!</span>
+      </div>
+      <div class="cd-bar"><i id="cd-fill" style="width: 95.5167%;"></i></div>
+      <div class="cd-stats">
+        <span class="cd-togo"><b id="cd-togo">538</b> to go</span>
+        <span id="cd-pace"><b>~108/day</b> to close it</span>
+        <span id="cd-have"><b>11,462</b> in so far</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- supporting cards -->
+  <div class="grid">
+    <div class="card">
+      <span class="label">Annual goal progress</span>
+      <div class="goalnum" id="goal-num">11,462 <small>of 35,000 · 32.7%</small></div>
+      <div class="bar"><div class="fill" id="goal-fill" style="width: 32.7486%;"></div></div>
+      <div class="tiers">
+        <span><i style="background:var(--green-light)"></i>Minimum goal — 32,000 <em>· $500 bonus</em></span>
+        <span><i style="background:var(--green)"></i>Official goal — 35,000 <em>· $5,000 bonus</em></span>
+        <span><i style="background:var(--green-dark)"></i>Stretch goal — 42,000 <em>· $10,000 bonus</em></span>
+      </div>
+    </div>
+    <div class="card">
+      <span class="label">Pacing toward 35,000</span>
+      <div class="row"><span>Current pace</span><b id="p-cur">1,976/mo</b></div>
+      <div class="row"><span>Needed pace</span><b id="p-need">3,803/mo</b></div>
+      <div class="row"><span>Projected year-end</span><b id="p-proj">23,690</b></div>
+      <span class="pill behind" id="p-pill">Behind pace</span>
+    </div>
+  </div>
+
+  <div class="foot" id="foot">Mockup data — figures mirror the OKR dashboard's 2026 referral totals by SCN source. Pace = average daily run-rate since Jan 1, projected to Dec 31. Live version pulls from Zoho.</div>
+</div>
+
+<script>
+  /* ============================================================
+     SPECIALIST REFERRAL TICKER — standalone team-wide view
+     Goal figures: 2026 Mercato Company-Wide Goal sheet.
+     Mockup numbers mirror the OKR dashboard's 2026 referral totals
+     (Q1 '26 + Q2 '26 QTD), summing to 11,462 across the SCN sources.
+     >>> Go live: replace BY_SOURCE with the Zoho per-source YTD pull. <<<
+     ============================================================ */
+  const BY_SOURCE = {                       // swap for live Zoho data
+    "SIPPS":5900, "ModifyHealth":3950, "SOMOS":980, "HVCC":510, "CDChoices":112, "ACT Care":10
+  };
+  const GOALS = {
+    amg:32000, official:35000, bhag:42000,
+    interim:{ target:12000, bonus:2500, byLabel:"June 30", deadline:new Date(2026,5,30,23,59,59) },
+    fyStart:new Date(2026,0,1), fyEnd:new Date(2026,11,31,23,59,59)
+  };
+  const DAY = 86400000;
+  const fmt = n => Math.round(n).toLocaleString("en-US");
+  const pad = n => String(n).padStart(2,"0");
+  const ytd = () => Object.values(BY_SOURCE).reduce((a,b)=>a+b,0);
+
+  function nextMilestone(now, v){
+    const g = GOALS;
+    if(now <= g.interim.deadline && v < g.interim.target)
+      return {label:"Sprint to the June 30 bonus", target:g.interim.target, bonus:g.interim.bonus,
+              byLabel:g.interim.byLabel, deadline:g.interim.deadline};
+    if(v < g.official)
+      return {label:"Push to the official goal", target:g.official, bonus:5000, byLabel:"Dec 31", deadline:g.fyEnd};
+    return {label:"Reach for the stretch goal", target:g.bhag, bonus:10000, byLabel:"Dec 31", deadline:g.fyEnd};
+  }
+
+  function tickClock(){
+    const now = new Date(), m = nextMilestone(now, ytd());
+    let ms = Math.max(0, m.deadline - now);
+    const d = Math.floor(ms/DAY); ms -= d*DAY;
+    const h = Math.floor(ms/3600000); ms -= h*3600000;
+    const mn = Math.floor(ms/60000); ms -= mn*60000;
+    document.getElementById("cd-d").textContent = d;
+    document.getElementById("cd-h").textContent = pad(h);
+    document.getElementById("cd-m").textContent = pad(mn);
+    document.getElementById("cd-s").textContent = pad(Math.floor(ms/1000));
+  }
+
+  function render(){
+    const now = new Date(), g = GOALS, v = ytd(), m = nextMilestone(now, v);
+
+    /* hero */
+    document.getElementById("cd-eyebrow").textContent = m.label;
+    document.getElementById("cd-head").innerHTML =
+      `<span class="cash">$${fmt(m.bonus)}</span> unlocks when we hit <b>${fmt(m.target)}</b> referrals by ${m.byLabel}`;
+    const toGo = Math.max(0, m.target - v);
+    const pct = Math.min(v / m.target * 100, 100);
+    document.getElementById("cd-pct").textContent = pct.toFixed(1) + "% there";
+    document.getElementById("cd-msg").textContent =
+      toGo>0 ? `Just ${fmt(toGo)} more by ${m.byLabel} — let's bring it home!` : "Milestone hit — bonus unlocked!";
+    document.getElementById("cd-fill").style.width = pct + "%";
+    document.getElementById("cd-togo").textContent = fmt(toGo);
+    const daysToDeadline = Math.max(1, Math.ceil((m.deadline - now)/DAY));
+    document.getElementById("cd-pace").innerHTML =
+      toGo>0 ? `<b>~${fmt(toGo/daysToDeadline)}/day</b> to close it` : `<b>Unlocked \u2713</b>`;
+    document.getElementById("cd-have").innerHTML = `<b>${fmt(v)}</b> in so far`;
+    tickClock();
+
+    /* annual goal */
+    const pctOfficial = v / g.official * 100;
+    document.getElementById("goal-num").innerHTML =
+      `${fmt(v)} <small>of ${fmt(g.official)} · ${pctOfficial.toFixed(1)}%</small>`;
+    document.getElementById("goal-fill").style.width = Math.min(pctOfficial,100) + "%";
+
+    /* pacing */
+    const daysElapsed = Math.max(1,(now-g.fyStart)/DAY);
+    const daysLeft = Math.max(0,(g.fyEnd-now)/DAY);
+    const perDay = v/daysElapsed, projected = v + perDay*daysLeft, ahead = projected>=g.official;
+    document.getElementById("p-cur").textContent  = fmt(perDay*30.44)+"/mo";
+    document.getElementById("p-need").textContent = (daysLeft>0?fmt((g.official-v)/daysLeft*30.44):"0")+"/mo";
+    document.getElementById("p-proj").textContent = fmt(projected);
+    const pill = document.getElementById("p-pill");
+    pill.textContent = ahead ? "On pace for 35,000" : "Behind pace";
+    pill.className = "pill " + (ahead ? "ahead" : "behind");
+
+    document.getElementById("stamp").textContent =
+      now.toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit"});
+    document.getElementById("foot").textContent =
+      "Mockup data — figures mirror the OKR dashboard's 2026 referral totals by SCN source. " +
+      "Pace = average daily run-rate since Jan 1, projected to Dec 31. Live version pulls from Zoho.";
+  }
+
+  render();
+  setInterval(tickClock, 1000);                 /* live countdown */
+  setInterval(render, 5*60*1000);               /* re-pull data periodically (mockup: recompute) */
+</script>
+
+
+</body></html>
